@@ -1,0 +1,9 @@
+{
+  "item": {
+      "email": {"S": "jim@yahoo.com"},
+      "firstname": {"S": "Jim"},
+      "lastname": {"S": "Johnson"},
+      "phone": {"S": "1234567890"},
+      "address": {"S": "234 oak st"}
+  }
+}

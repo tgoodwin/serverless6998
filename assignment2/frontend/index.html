@@ -18,6 +18,7 @@
 		#todo-list 				{ margin-bottom:30px; }
 		#todo-form 	 			{ margin-bottom:50px; }
 		.entry { padding: 10px; }
+		.bar { padding: 10px;}
 	</style>
 
 	<!-- SPELLS -->
@@ -44,17 +45,18 @@
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO Customer.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg entry" placeholder="First Name" ng-model="formData.firstname">
-						<input type="text" class="form-control input-lg entry" placeholder="Last Name" ng-model="formData.lastname">
-						<input type="text" class="form-control input-lg entry" placeholder="Email" ng-model="formData.email">
-						<input type="text" class="form-control input-lg entry" placeholder="Mailing Address" ng-model="formData.address">
+						<input type="text" class="form-control input-lg entry" placeholder="First Name" ng-model="formData.firstname"></br>
+						<input type="text" class="form-control input-lg entry" placeholder="Last Name" ng-model="formData.lastname"></br>
+						<input type="text" class="form-control input-lg entry" placeholder="Email" ng-model="formData.email"></br>
+						<input type="text" class="form-control input-lg entry" placeholder="Mailing Address" ng-model="formData.address"></br>
 						<input type="text" class="form-control input-lg entry" placeholder="Phone Number" ng-model="formData.phone_number">
 					</div>
 
 					<!-- createCustomer() WILL CREATE A NEW CUSTOMER -->
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createCustomer()">Create</button>
-					<!-- <button type="submit" class="btn btn-primary btn-lg" ng-click="updateCustomer()">Update</button> -->
-					<!-- <button type="submit" class="btn btn-primary btn-lg" ng-click="deleteCustomer()">Delete</button> -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="updateCustomer()">Update</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="findCustomer()">Find</button>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="deleteCustomer()">Delete</button>
 				</form>
 			</div>
 		</div>

@@ -1,13 +1,13 @@
 <!doctype html>
 
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchTodo">
+<html ng-app="customerApp">
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-	<title>Node/Angular Todo App</title>
+	<title>Sign Up</title>
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
@@ -36,7 +36,6 @@
 			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
 		</div>
 
-		<!-- TODO LIST -->
 		<!-- <div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
@@ -62,14 +61,15 @@
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO Customer.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="First Name" ng-model="formData.firstName">
-						<input type="text" class="form-control input-lg text-center" placeholder="Last Name" ng-model="formData.lastName">
-						<input type="text" class="form-control input-lg text-center" placeholder="Email address" ng-model="formData.email">
-						<input type="text" class="form-control input-lg text-center" placeholder="Email address" ng-model="formData.email">
+						<input type="text" class="form-control input-lg text-center" placeholder="First Name" ng-model="formData.firstname">
+						<input type="text" class="form-control input-lg text-center" placeholder="Last Name" ng-model="formData.lastname">
+						<input type="text" class="form-control input-lg text-center" placeholder="Email" ng-model="formData.email">
+						<input type="text" class="form-control input-lg text-center" placeholder="Mailing Address" ng-model="formData.address">
+						<input type="text" class="form-control input-lg text-center" placeholder="Phone Number" ng-model="formData.phone_number">
 					</div>
 
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Create</button>
+					<!-- createCustomer() WILL CREATE A NEW CUSTOMER -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createCustomer()">Create</button>
 				</form>
 			</div>
 		</div>

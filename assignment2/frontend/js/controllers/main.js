@@ -24,6 +24,7 @@ angular.module('customerController', [])
 				$scope.loading = true;
 
 				// call the create function from our service (returns a promise object)
+				console.log($scope.formData)
 				Customer.create($scope.formData)
 
 					// if successful creation, call our get function to get all the new todos

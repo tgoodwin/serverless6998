@@ -1,1 +1,0 @@
-angular.module('customerApp', ['customerController', 'customerService']);

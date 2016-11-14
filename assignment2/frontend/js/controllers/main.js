@@ -1,6 +1,5 @@
 angular.module('customerController', [])
 
-	// inject the Todo service factory into our controller
 	.controller('mainController', ['$scope','$http','Customer', function($scope, $http, Customer) {
 		$scope.formData = {};
 		$scope.loading = true;
@@ -33,11 +32,12 @@ angular.module('customerController', [])
 				$scope.loading = true;
 
 				// call the create function from our service (returns a promise object)
-				console.log($scope.formData);
-				Customer.read($scope.formData)
+				Customer.read($scope.formData.email)
 
 					// if successful creation, call our get function to get all the new todos
 					.success(function(data) {
+						console.log('from dynamoDB: ');
+						console.log(data);
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
 						$scope.response = data;
@@ -57,6 +57,7 @@ angular.module('customerController', [])
 
 					// if successful creation, call our get function to get all the new todos
 					.success(function(data) {
+						console.log('updated customer!');
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
 					});
@@ -64,12 +65,10 @@ angular.module('customerController', [])
 		};
 
 		// DELETE ==================================================================
-		// delete a todo after checking it
 		$scope.deleteCustomer = function(id) {
 			$scope.loading = true;
 
 			Customer.delete(id)
-				// if successful creation, call our get function to get all the new todos
 				.success(function(data) {
 					$scope.loading = false;
 					$scope.APIresponse = data;

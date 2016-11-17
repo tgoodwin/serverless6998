@@ -8,6 +8,7 @@ angular.module('customerService', [])
 	                headers : {
 	                    'Content-Type': 'application/json'	               	 }
             	}
+            	console.log(customerData)
 				return $http.post('https://5qykueb321.execute-api.us-east-1.amazonaws.com/test/customers/' + customerData.email,  customerData, config)
 					.success(function(response) {
 						console.log(response);

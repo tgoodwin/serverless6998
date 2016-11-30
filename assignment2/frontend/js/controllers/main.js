@@ -14,13 +14,25 @@ angular.module('customerController', [])
 				$scope.loading = true;
 
 				// call the create function from our service (returns a promise object)
+				// console.log(document.getElementById('address').value);
+				// console.log(document.getElementById('city').value);
+				// console.log(document.getElementById('state').value);
+				// console.log(document.getElementById('ZIP').value);
+				$scope.formData.address = document.getElementById('street').value;
+				$scope.formData.city = document.getElementById('city').value;
+				$scope.formData.state = document.getElementById('state').value;
+				$scope.formData.ZIP = document.getElementById('ZIP').value;
 				console.log($scope.formData);
+
 				Customer.create($scope.formData)
 
 					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
+					.then(function(data) {
+						console.log(data);
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
+					}, function(error) {
+						console.log(error);
 					});
 			}
 		};
@@ -34,13 +46,14 @@ angular.module('customerController', [])
 				// call the create function from our service (returns a promise object)
 				Customer.read($scope.formData.email)
 
-					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
+					.then(function(data) {
 						console.log('from dynamoDB: ');
 						console.log(data);
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
 						$scope.response = data;
+					}, function(error) {
+						console.log(error);
 					});
 			}
 		};
@@ -56,10 +69,12 @@ angular.module('customerController', [])
 				Customer.update($scope.formData)
 
 					// if successful creation, call our get function to get all the new todos
-					.success(function(data) {
+					.then(function(data) {
 						console.log('updated customer!');
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
+					}, function(error) {
+						console.log(error);
 					});
 			}
 		};
@@ -69,9 +84,12 @@ angular.module('customerController', [])
 			$scope.loading = true;
 
 			Customer.delete(id)
-				.success(function(data) {
+				.then(function(data) {
+					console.log('deleted customer: ', data);
 					$scope.loading = false;
 					$scope.APIresponse = data;
+				}, function(error) {
+					console.log(error);
 				});
 		};
 	}]);

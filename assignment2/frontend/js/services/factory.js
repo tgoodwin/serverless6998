@@ -8,29 +8,40 @@ angular.module('customerService', [])
 	                headers : {
 	                    'Content-Type': 'application/json'	               	 }
             	}
-            	console.log(customerData)
+            	console.log(customerData);
 				return $http.post('https://5qykueb321.execute-api.us-east-1.amazonaws.com/test/customers/' + customerData.email,  customerData, config)
-					.success(function(response) {
-						console.log(response);
+					.then(function(response, error) {
+						if (error) {
+							return error;
+						} else {
+							return response;
+						}
+					
 					});
 			},
 			// ID is the customer's EMAIL from the email text-entry box
 			read: function(id) {
 				return $http.get('https://5qykueb321.execute-api.us-east-1.amazonaws.com/test/customers/' + id)
-					.success(function(response) {
+					.then(function(response) {
 						console.log(response);
+					}, function(error) {
+						alert(error.data.type);
 					});
 			},
 			update : function(customerData) {
 				return $http.put('https://5qykueb321.execute-api.us-east-1.amazonaws.com/test/customers', customerData)
-					.success(function(response) {
+					.then(function(response) {
 						console.log(response);
+					}, function(error) {
+						alert(error.data.type);
 					});
 			},
 			delete : function(id) {
 				return $http.delete('https://5qykueb321.execute-api.us-east-1.amazonaws.com/test/customers/' + id)
-					.success(function(response) {
+					.then(function(response) {
 						console.log(response);
+					}, function(error) {
+						alert(error.data.type);
 					});
 			}
 		}

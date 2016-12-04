@@ -28,28 +28,62 @@
 	<script src="js/services/factory.js"></script> <!-- load our todo service -->
 	<script src="js/core.js"></script> <!-- load our main application -->
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/3.2/jquery.liveaddress.min.js"></script>
+<script>
+var ss = jQuery.LiveAddress({
+    key: '11473215805948124',
+    waitForStreet: true, 
+    debug: false,
+    target: "US",
+    addresses: [{
+      address1: "#street",
+      locality: "#city",
+      administrative_area: "#state",
+      postal_code: "#ZIP",
+      country: "#country",
+      delivery_point_barcode: "#barcode"
+    }]
+});
+function gotIt() {
+	document.getElementById("messageDisplay").style.display = "none";
+}
+</script>
+
 </head>
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
 	<div class="container">
-
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
 			<h1>Create an Account</h1>
+		</div>
+		<div id="messageDisplay" style="display: none;">
+			<p id="email"></p>
+			<p id="First"></p>
+			<p id="Last"></p>
+			<p id="Phone"></p>
+			<p id="Address"><p>
+			<button id="ok" onclick="gotIt();">OK</button>
 		</div>
 
 		<!-- FORM TO CREATE CUSTOMERS -->
 		<div id="todo-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form form-autofill-fix>
+				<form>
 					<div class="form-group">
 
 						<!-- BIND THIS VALUE TO Customer.text IN ANGULAR -->
 						<input type="text" class="form-control input-lg entry" placeholder="First Name" ng-model="formData.firstname"></br>
 						<input type="text" class="form-control input-lg entry" placeholder="Last Name" ng-model="formData.lastname"></br>
 						<input type="text" class="form-control input-lg entry" placeholder="Email" ng-model="formData.email"></br>
-						<input type="text" class="form-control input-lg entry" placeholder="Mailing Address" ng-model="formData.address"></br>
-						<input type="text" class="form-control input-lg entry" placeholder="Phone Number" ng-model="formData.phone_number">
+						<input type="text" class="form-control input-lg entry" placeholder="Phone Number" ng-model="formData.phone_number"><br>
+						<input type="text" id="street" class="form-control input-lg entry" placeholder="Mailing Address" ng-model="formData.address"></br>
+						<input autocomplete="on" type="text" id="city" class="form-control input-lg entry" placeholder="City" ng-model="formData.city"></br>
+						<input autocomplete="on" type="text" id="state" class="form-control input-lg entry" placeholder="State" ng-model="formData.state"></br>
+						<input autocomplete="on" type="text" id="ZIP" class="form-control input-lg entry" placeholder="ZIP" ng-model="formData.zip_code"></br>
+						
+
 					</div>
 
 					<!-- createCustomer() WILL CREATE A NEW CUSTOMER -->

@@ -12,12 +12,6 @@ angular.module('customerController', [])
 			// if form is empty, nothing will happen
 			if ($scope.formData.firstname != undefined) {
 				$scope.loading = true;
-
-				// call the create function from our service (returns a promise object)
-				// console.log(document.getElementById('address').value);
-				// console.log(document.getElementById('city').value);
-				// console.log(document.getElementById('state').value);
-				// console.log(document.getElementById('ZIP').value);
 				$scope.formData.address = document.getElementById('street').value;
 				$scope.formData.city = document.getElementById('city').value;
 				$scope.formData.state = document.getElementById('state').value;
@@ -27,8 +21,7 @@ angular.module('customerController', [])
 				Customer.create($scope.formData)
 
 					// if successful creation, call our get function to get all the new todos
-					.then(function(data) {
-						console.log(data);
+					.then(function(response) {
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
 					}, function(error) {
@@ -40,6 +33,7 @@ angular.module('customerController', [])
 		$scope.readCustomer = function() {
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
+			console.log("read");
 			if ($scope.formData.email != undefined) {
 				$scope.loading = true;
 
@@ -61,6 +55,10 @@ angular.module('customerController', [])
 		$scope.updateCustomer = function() {
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
+			$scope.formData.address = document.getElementById('street').value;
+			$scope.formData.city = document.getElementById('city').value;
+			$scope.formData.state = document.getElementById('state').value;
+			$scope.formData.ZIP = document.getElementById('ZIP').value;
 			if ($scope.formData.email != undefined) {
 				$scope.loading = true;
 
@@ -80,10 +78,10 @@ angular.module('customerController', [])
 		};
 
 		// DELETE ==================================================================
-		$scope.deleteCustomer = function(id) {
+		$scope.deleteCustomer = function() {
 			$scope.loading = true;
 
-			Customer.delete(id)
+			Customer.delete($scope.formData.email)
 				.then(function(data) {
 					console.log('deleted customer: ', data);
 					$scope.loading = false;
